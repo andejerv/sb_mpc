@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "eigen3/Eigen/Dense"
+#include "utilities.h"
 
 /*
 TODO:
@@ -31,6 +32,6 @@ class Object
         Object(double N, double E, double s, double vel, double hdg);
         ~Object();
 
-        std::unique_ptr<double[]> simulate_position(int num_steps, double step_size);
+        std::unique_ptr<coordinates[]> simulate_position(int num_steps, double step_size);
         
 };
