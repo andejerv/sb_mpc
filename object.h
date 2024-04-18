@@ -1,15 +1,9 @@
 #pragma once
 
 #include <memory>
+#include <eigen3/Eigen/Dense>
 
-#include "eigen3/Eigen/Dense"
 #include "utilities.h"
-
-/*
-TODO:
-- Return list of simulated positions
-
-*/
 
 enum object_type
 {

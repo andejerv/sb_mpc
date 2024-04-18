@@ -1,5 +1,6 @@
 #include "object.h"
 #include <iostream>
+#include <cmath>
 
 Object::Object(double N, double E, double s): type(object_type::STATIC), global_N(N), global_E(E), size(s), velocity(0), heading(0){
     // Constructor
@@ -30,8 +31,8 @@ Eigen::MatrixXd Object::simulate_position(const int num_steps, const double step
         position(0,0) = global_N;
         position(1,0) = global_E;
         for (int i = 1; i < num_steps+1; i++){
-            position(0,i) = position(0,i-1) + velocity*cos(heading)*step_size;
-            position(1,i) = position(1,i-1) + velocity*sin(heading)*step_size;
+            position(0,i) = position(0,i-1) + velocity*std::cos(heading)*step_size;
+            position(1,i) = position(1,i-1) + velocity*std::sin(heading)*step_size;
         }
         break;
 

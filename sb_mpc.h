@@ -1,10 +1,5 @@
 #pragma once
 
-/*
-TODO:
-- Cost function
-*/
-
 class SB_MPC
 {
 

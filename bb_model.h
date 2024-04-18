@@ -1,19 +1,16 @@
 #pragma once
 
-/*
-TODO:
-- Return list of simulated positions
-- Linear predictor Last_pos -> Next_pos
-*/
-
+#include <eigen3/Eigen/Dense>
 
 class BB_MODEL
 {
     private:
 
+
     public:
         BB_MODEL();
         ~BB_MODEL();
-        void simulate_position(int );
+        
+        Eigen::MatrixXd simulate_position(int num_steps, double step_size);
         
 };
