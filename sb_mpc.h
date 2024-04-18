@@ -1,7 +1,13 @@
 #pragma once
 
-class SB_MPC{
-    
+/*
+TODO:
+- Cost function
+*/
+
+class SB_MPC
+{
+
     private:
 
     public:
