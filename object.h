@@ -1,5 +1,9 @@
 #pragma once
 
+#include <memory>
+
+#include "eigen3/Eigen/Dense"
+
 /*
 TODO:
 - Return list of simulated positions
@@ -26,5 +30,7 @@ class Object
         Object(double N, double E, double s);
         Object(double N, double E, double s, double vel, double hdg);
         ~Object();
+
+        std::unique_ptr<double[]> simulate_position(int num_steps, double step_size);
         
 };
