@@ -9,6 +9,7 @@ add_executable(sb_mpc_test
             main.cpp
             sb_mpc.cpp
             bb_model.cpp
-            object.cpp)
+            object.cpp
+            utilities.cpp)
 
 target_compile_options(sb_mpc_test PRIVATE -Wall -Wextra -Wpedantic)
