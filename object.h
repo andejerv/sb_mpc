@@ -32,6 +32,6 @@ class Object
         Object(double N, double E, double s, double vel, double hdg);
         ~Object();
 
-        std::unique_ptr<coordinates[]> simulate_position(int num_steps, double step_size);
+        Eigen::MatrixXd simulate_position(int num_steps, double step_size);
         
 };
