@@ -15,7 +15,7 @@ Object::~Object(){
 }
 
 // Position prediction function
-Eigen::MatrixXd Object::simulate_position(const int num_steps, const double step_size){
+Eigen::MatrixXd Object::simulate_positions(const int num_steps, const double step_size){
     Eigen::MatrixXd position(2, num_steps+1);
 
     switch (this->type)
