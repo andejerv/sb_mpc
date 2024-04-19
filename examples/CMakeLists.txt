@@ -10,5 +10,6 @@ include_directories(../include/SB_MPC)
 # add all source files to build
 file(GLOB SOURCES "../src/*.cpp")
 
-# build an example program
+# build example programs
 add_executable(example1 example1.cpp ${SOURCES})
+add_executable(example2 example2.cpp ${SOURCES})
