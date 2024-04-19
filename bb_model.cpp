@@ -18,16 +18,6 @@ Eigen::VectorXd Agent::getState(){
 }
 
 
-BB_MODEL::BB_MODEL(double _N, double _E){
-    _state = Eigen::VectorXd(2);
-    _state << _N, _E;
-}
-
-BB_MODEL::~BB_MODEL(){
-    // Destructor
-}
-
-
 Eigen::MatrixXd Agent::simulate_positions(const int num_steps, const double step_size, const Eigen::VectorXd & control_input){
     Eigen::MatrixXd positions = Eigen::MatrixXd::Zero(this->_state.rows(), num_steps+1); //state matrix, rows=num_states, cols=initial+num_steps
 
@@ -54,6 +44,16 @@ Eigen::MatrixXd Agent::simulate_positions(const int num_steps, const double step
     }
 
     return positions;
+}
+
+
+BB_MODEL::BB_MODEL(double _N, double _E){
+    _state = Eigen::VectorXd(2);
+    _state << _N, _E;
+}
+
+BB_MODEL::~BB_MODEL(){
+    // Destructor
 }
 
 
