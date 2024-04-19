@@ -1,6 +1,8 @@
 # SB_MPC
 This is a C++ implementation of a simulation-based model predictive controller for object avoidance in autonomous vessels, based on the repository by ingerbha https://github.com/ingerbha/sb_mpc. It is primarily developed for use on the BlueBoat from Blue Robotics, https://bluerobotics.com/store/boat/blueboat/blueboat/. There is however small modifications necessary to adopt it for other vessels, this is further described in the usage section.
 
+Note: These instruction are for Linux users, windows and macOS may be different!
+
 ## Table Of Contents
 - [Installation](#installation)
 - [Usage](#usage)
@@ -54,7 +56,7 @@ Remember to link against the SB_MPC library when compiling your code.
 
 ## Examples
 
-The examples are to see the functionality of the library. They can be modified and experimented with
+The examples are to see the functionality of the library. They can be modified and experimented with.
 
 To run the examples:
 
