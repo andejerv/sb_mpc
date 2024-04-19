@@ -1,15 +1,17 @@
-cmake_minimum_required(VERSION 3.22.0)
+cmake_minimum_required(VERSION 3.15)
+project(SB_MPC)
 
-project(blueboat_sb_mpc
-    VERSION 1.0
-    DESCRIPTION "A brief CMake experiment"
-    LANGUAGES CXX)
+# specify the C++ standard
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(sb_mpc_test
-            main.cpp
-            sb_mpc.cpp
-            bb_model.cpp
-            object.cpp
-            utilities.cpp)
+# specify the header files location
+include_directories(include)
 
-target_compile_options(sb_mpc_test PRIVATE -Wall -Wextra -Wpedantic)
+# specify the source files location
+file(GLOB SOURCES "src/*.cpp")
+
+# generate the static library from the sources
+add_library(SB_MPC STATIC ${SOURCES})
+
+# specify where the public headers of this library are
+target_include_directories(SB_MPC PUBLIC include)
