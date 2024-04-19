@@ -4,26 +4,28 @@
 
 #include "bb_model.h"
 #include "object.h"
+#include "utilities.h"
 
 int main(){
+    Stopwatch sw;
 
-    Object dynamic_obj = Object(0,0,1,1,0); // N, E, Size, Velocity, Heading
-
-    Eigen::MatrixXd dynamic_pos = dynamic_obj.simulate_position(10, 1);
-
-    std::cout << dynamic_pos << std::endl;
-
-    BB_MODEL bb_model = BB_MODEL();
-
-    Eigen::VectorXd state(4);
-    state << 0, 0, 1, 0; // N, E, Velocity, Heading
+    BB_MODEL bb_model = BB_MODEL(0,0);
 
     Eigen::VectorXd control_input(2);
-    control_input << 1, 0; // Acceleration, Heading
+    control_input << 1, (static_cast<double>(3)/2)*M_PI; // Acceleration, Heading
 
-    Eigen::MatrixXd positions = bb_model.simulate_positions(10, 1, state, control_input);
+    int num_iterations = 100;
+    Eigen::MatrixXd positions;
+    sw.start();
+    for (int i = 0; i < num_iterations; i++){
+        positions = bb_model.simulate_positions(10, 1, control_input);
+    }
+    double duration = sw.stop()/num_iterations;
+
+    std::cout << "Duration: " << duration << " seconds" << std::endl;
 
     std::cout << positions << std::endl;
+    
     
 
 
