@@ -19,7 +19,7 @@ make
 
 4. Include the necessary header files in your C++ code:
 ```cpp
-#include "sb_mpc/Agent.h"
+#include "SB_MPC.h"
 ```
 
 5. Create an instance of the Agent class and implement the dxdt function and state initialization in your own class:
