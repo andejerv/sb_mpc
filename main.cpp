@@ -2,9 +2,7 @@
 #include <cmath>
 #include <eigen3/Eigen/Dense>
 
-#include "bb_model.h"
-#include "object.h"
-#include "utilities.h"
+#include "SB_MPC.h"
 
 int main(){
     Stopwatch sw;
