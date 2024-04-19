@@ -1,6 +1,12 @@
 # SB_MPC
 
-To use the SB_MPC library, follow these steps:
+## Table Of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+
+## Installation
+To install the SB_MPC library, follow these steps:
+Please note that the above instructions assume that you have the necessary dependencies installed and configured correctly.
 
 1. Clone the repository:
 ```bash
@@ -42,4 +48,4 @@ Use the library in your code as needed.
 
 Remember to link against the SB_MPC library when compiling your code.
 
-Please note that the above instructions assume that you have the necessary dependencies installed and configured correctly.
+## Usage
