@@ -9,6 +9,7 @@ Stopwatch sw;
 int main(){
     // Init agent model
     BB_MODEL bb_model = BB_MODEL(0,0);
+    SB_MPC mpc = SB_MPC(100, 0.2);
 
     // Create control inputs
     Eigen::VectorXd control_input(2);
@@ -18,10 +19,12 @@ int main(){
     int num_iterations = 100;
     Eigen::MatrixXd positions;
 
+    double best_hdg_os, best_vel_os;
+
     sw.start();
 
     for (int i = 0; i < num_iterations; i++){
-        positions = bb_model.simulate_positions(1000, 0.1, control_input); // Simulate 1000 steps with 0.1s step size
+        mpc.getBestControlOffset(best_hdg_os, best_vel_os, 0, 0, &bb_model, nullptr); // Simulate 1000 steps with 0.1s step size)
     }
 
     double duration = sw.stop()/num_iterations;
