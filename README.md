@@ -4,6 +4,7 @@ This is a C++ implementation of a simulation-based model predictive controller f
 ## Table Of Contents
 - [Installation](#installation)
 - [Usage](#usage)
+- [Example](#examples)
 
 ## Installation
 To install the SB_MPC library, follow these steps:
@@ -50,3 +51,24 @@ Use the library in your code as needed.
 Remember to link against the SB_MPC library when compiling your code.
 
 ## Usage
+
+## Examples
+
+The examples are to see the functionality of the library. They can be modified and experimented with
+
+To run the examples:
+
+1. Navigate to examples/build:
+```bash
+cd SB_MPC/examples/build
+```
+
+2. Generate makefile and compile examples:
+```bash
+cmake .. && make
+```
+
+3. Run the desired example:
+```bash
+./examplex
+```
