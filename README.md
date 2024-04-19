@@ -4,7 +4,7 @@ This is a C++ implementation of a simulation-based model predictive controller f
 ## Table Of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Example](#examples)
+- [Examples](#examples)
 
 ## Installation
 To install the SB_MPC library, follow these steps:
