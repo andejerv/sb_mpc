@@ -43,3 +43,15 @@ Eigen::MatrixXd Object::simulate_positions(const int num_steps, const double ste
 
     return position;
 }
+
+double Object::getSize(){
+    return this->size;
+}
+
+double Object::getCollisionDistance(){
+    return this->collisionDistance;
+}
+
+double Object::getSafeDistance(){
+    return this->safeDistance;
+}

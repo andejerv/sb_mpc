@@ -21,11 +21,19 @@ class Object
     double velocity;
     double heading;
 
+    double collisionDistance = 0; // Distances lower than this counts as collision
+    double safeDistance = 1; // Distance higher than this gives 0 collision risk
+
     public:
+    // FIXME - Add a constructor that takes collision and safe distance into account
         Object(double N, double E, double s);
         Object(double N, double E, double s, double vel, double hdg);
         ~Object();
 
         Eigen::MatrixXd simulate_positions(int num_steps, double step_size);
+
+        double getSize();
+        double getCollisionDistance();
+        double getSafeDistance();
         
 };
