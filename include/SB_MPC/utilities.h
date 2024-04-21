@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <eigen3/Eigen/Dense>
 #include <chrono>
 
 struct coordinates
@@ -19,3 +20,6 @@ class Stopwatch
         void start();
         double stop();
 };
+
+double deg2rad(double deg);
+Eigen::Matrix3d ned2cartesian(const Eigen::Matrix3d & ned);
