@@ -32,6 +32,8 @@ class Object
 
         Eigen::MatrixXd simulate_positions(int num_steps, double step_size);
 
+        double getGlobalN();
+        double getGlobalE();
         double getSize();
         double getCollisionDistance();
         double getSafeDistance();

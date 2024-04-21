@@ -44,6 +44,14 @@ Eigen::MatrixXd Object::simulate_positions(const int num_steps, const double ste
     return position;
 }
 
+double Object::getGlobalN(){
+    return this->global_N;
+}
+
+double Object::getGlobalE(){
+    return this->global_E;
+}
+
 double Object::getSize(){
     return this->size;
 }
