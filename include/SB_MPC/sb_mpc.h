@@ -13,14 +13,17 @@ class SB_MPC
         int num_steps = 0;
         double step_size = 0;
 
-        double hdg_offsets[5] = {-10, -5, 0, 5, 10};
-        //double vel_offsets[7] = {0.5, 1, 1.5, 2};
+        double hdg_offsets[9] = {deg2rad(-90), deg2rad(-45), deg2rad(-30), deg2rad(-15), deg2rad(0), deg2rad(15), deg2rad(30), deg2rad(55), deg2rad(90)}; // Offsets in rads
+        double vel_offsets[3] = {0, 0.5, 1};
 
         // Saftey parameters
         double d_safe = 1.0; // distance below is considerd a collision
         double d_close = 0.5; // distance for which an object are considered in the algorithm
         double time_to_collision_weigth = 1.0;
-        double distance_within_dsafe_weigth = 1.0;
+        double distance_within_dsafe_weigth = 4.0;
+        double port_penalty_constant = 1.5;
+        double starboard_penalty_constant = 1.10;
+        double slow_speed_penalty_constant = 2.0;
 
 
     public:

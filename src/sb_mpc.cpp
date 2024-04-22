@@ -32,13 +32,25 @@ void SB_MPC::getBestControlOffset(double & hdg_os_best, double & vel_os_best, do
 
     Eigen::MatrixXd sim_states;
     // For all possible heading offsets
-    for (auto offset : hdg_offsets){
-        // Simulate the vehicle with the offset
-        std::cout << "Checking offset: " << offset << std::endl << std::endl;
-        sim_states = usv->simulate_positions(this->num_steps, this->step_size, Eigen::Vector2d(vel, hdg + offset));
-        std::cout << "Simulated states: " << std::endl << sim_states << std::endl << std::endl;
-        cost_i = costFunction(sim_states, obst_positions, obstacles);
-        costs.push_back(cost_i);
+    for (auto hdg_os : hdg_offsets){
+        for (auto vel_os : vel_offsets){
+            // Simulate the vehicle with the offset
+            //std::cout << "Checking offset: " << offset << std::endl << std::endl;
+            sim_states = usv->simulate_positions(this->num_steps, this->step_size, Eigen::Vector2d(vel_os, hdg + hdg_os));
+            //std::cout << "Simulated states: " << std::endl << sim_states << std::endl << std::endl;
+            cost_i = costFunction(sim_states, obst_positions, obstacles);
+
+            // Add penalty for heading offset
+            if(hdg_os < 0){
+                cost_i += this->port_penalty_constant*std::pow(hdg_os, 2);
+            } else {
+                cost_i += this->starboard_penalty_constant*std::pow(hdg_os, 2);
+            }
+
+            cost_i += this->slow_speed_penalty_constant*std::pow(1-vel_os, 2);
+
+            costs.push_back(cost_i);
+        }
     }
 
     // Find lowest cost in cost vector
@@ -46,11 +58,12 @@ void SB_MPC::getBestControlOffset(double & hdg_os_best, double & vel_os_best, do
         std::cout << "Cost: " << costs.at(i) << std::endl;
         if(costs.at(i) < cost){
             cost = costs.at(i);
-            hdg_os_best = this->hdg_offsets[i];
+            vel_os_best = this->vel_offsets[i%3];
+            hdg_os_best = this->hdg_offsets[i/3];
         }
     }
-
-    return;
+    std::cout << "Best heading offset: " << hdg_os_best << std::endl;
+    std::cout << "Best velocity offset: " << vel_os_best << std::endl;
 }
 
 double SB_MPC::costFunction(const Eigen::MatrixXd & sim_states, const std::vector<Eigen::MatrixXd> & obst_positions, std::vector<Object*>& obstacles){
@@ -62,7 +75,7 @@ double SB_MPC::costFunction(const Eigen::MatrixXd & sim_states, const std::vecto
     // For every obstacle
     for(int i = 0; i < obst_positions.size(); i++){
         Eigen::MatrixXd dist = obst_positions.at(i) - sim_states;
-        std::cout << "Distance: " << std::endl << dist << std::endl << std::endl;
+        //std::cout << "Distance: " << std::endl << dist << std::endl << std::endl;
         
 
         for(int k = 0; k < dist.cols(); k++){

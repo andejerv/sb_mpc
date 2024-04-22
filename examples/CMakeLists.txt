@@ -11,8 +11,8 @@ include_directories(../include/SB_MPC)
 file(GLOB SOURCES "../src/*.cpp")
 
 # build example programs
-#add_executable(example1 example1.cpp ${SOURCES})
-#add_executable(example2 example2.cpp ${SOURCES})
+add_executable(example1 example1.cpp ${SOURCES})
+add_executable(example2 example2.cpp ${SOURCES})
 add_executable(mpc_test mpc_test.cpp ${SOURCES})
 
 add_executable(sfml_sim sfml_sim.cpp ${SOURCES})

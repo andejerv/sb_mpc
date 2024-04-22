@@ -15,27 +15,39 @@ class Object
 {
     private:
     object_type type;
-    double global_N;
-    double global_E;
+    double x;
+    double y;
     double size;
     double velocity;
     double heading;
 
-    double collisionDistance = 0; // Distances lower than this counts as collision
-    double safeDistance = 1; // Distance higher than this gives 0 collision risk
+    double collisionDistance; // Distances lower than this counts as collision
+    double safeDistance; // Distance higher than this gives 0 collision risk
 
     public:
     // FIXME - Add a constructor that takes collision and safe distance into account
-        Object(double N, double E, double s);
-        Object(double N, double E, double s, double vel, double hdg);
+        Object(double _x, double _y, double s, double collisionDist, double safeDist);
+        Object(double _x, double _y, double s, double collisionDist, double safeDist, double vel, double hdg);
         ~Object();
 
         Eigen::MatrixXd simulate_positions(int num_steps, double step_size);
 
-        double getGlobalN();
-        double getGlobalE();
+        double getX();
+        double getY();
         double getSize();
+        object_type getType();
+        double getVelocity();
+        double getHeading();
         double getCollisionDistance();
         double getSafeDistance();
+
+        void setX(double _x);
+        void setY(double _y);
+        void setSize(double s);
+        void setType(object_type t);
+        void setVelocity(double vel);
+        void setHeading(double hdg);
+        void setCollisionDistance(double collisionDist);
+        void setSafeDistance(double safeDist);
         
 };

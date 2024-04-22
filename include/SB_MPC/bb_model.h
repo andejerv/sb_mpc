@@ -14,13 +14,13 @@ class Agent
         virtual Eigen::VectorXd dxdt(const Eigen::VectorXd& state, const Eigen::VectorXd& control_input) = 0;
 
     protected:
-        Eigen::VectorXd _state;
+        Eigen::Vector2d state;
 
     public:
         Agent();
         ~Agent();
 
-        void setState(const Eigen::VectorXd& state);
+        void setState(const Eigen::VectorXd& _state);
         Eigen::VectorXd getState();
 
         Eigen::MatrixXd simulate_positions(const int num_steps, const double step_size, const Eigen::VectorXd& control_input);
@@ -33,7 +33,7 @@ class BB_MODEL: public Agent
         Eigen::VectorXd dxdt(const Eigen::VectorXd& state, const Eigen::VectorXd& control_input) override;
 
     public:
-        BB_MODEL(double _N, double _E);
+        BB_MODEL(double _x, double _y);
         ~BB_MODEL();
 
 };

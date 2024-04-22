@@ -2,11 +2,11 @@
 #include <iostream>
 #include <cmath>
 
-Object::Object(double N, double E, double s): type(object_type::STATIC), global_N(N), global_E(E), size(s), velocity(0), heading(0){
+Object::Object(double _x, double _y, double s, double collisionDist, double safeDist): type(object_type::STATIC), x(_x), y(_y), size(s), collisionDistance(collisionDist), safeDistance(safeDist), velocity(0), heading(0){
     // Constructor
 }
 
-Object::Object(double N, double E, double s, double vel, double hdg): type(object_type::DYNAMIC), global_N(N), global_E(E), size(s), velocity(vel), heading(hdg){
+Object::Object(double _x, double _y, double s , double collisionDist, double safeDist, double vel, double hdg): type(object_type::DYNAMIC), x(_x), y(_y), size(s), collisionDistance(collisionDist), safeDistance(safeDist), velocity(vel), heading(hdg){
 
 }
 
@@ -22,17 +22,17 @@ Eigen::MatrixXd Object::simulate_positions(const int num_steps, const double ste
     {
     case object_type::STATIC:
         for (int i = 0; i < num_steps+1; i++){
-            position(0,i) = global_N;
-            position(1,i) = global_E;
+            position(0,i) = x;
+            position(1,i) = y;
         }
         break;
 
     case object_type::DYNAMIC:
-        position(0,0) = global_N;
-        position(1,0) = global_E;
+        position(0,0) = x;
+        position(1,0) = y;
         for (int i = 1; i < num_steps+1; i++){
-            position(0,i) = position(0,i-1) + velocity*std::cos(heading)*step_size;
-            position(1,i) = position(1,i-1) + velocity*std::sin(heading)*step_size;
+            position(0,i) = position(0,i-1) + this->velocity*std::cos(this->heading)*step_size;
+            position(1,i) = position(1,i-1) + this->velocity*std::sin(this->heading)*step_size;
         }
         break;
 
@@ -44,16 +44,28 @@ Eigen::MatrixXd Object::simulate_positions(const int num_steps, const double ste
     return position;
 }
 
-double Object::getGlobalN(){
-    return this->global_N;
+double Object::getX(){
+    return this->x;
 }
 
-double Object::getGlobalE(){
-    return this->global_E;
+double Object::getY(){
+    return this->y;
 }
 
 double Object::getSize(){
     return this->size;
+}
+
+object_type Object::getType(){
+    return this->type;
+}
+
+double Object::getVelocity(){
+    return this->velocity;
+}
+
+double Object::getHeading(){
+    return this->heading;
 }
 
 double Object::getCollisionDistance(){
@@ -62,4 +74,36 @@ double Object::getCollisionDistance(){
 
 double Object::getSafeDistance(){
     return this->safeDistance;
+}
+
+void Object::setX(double _x){
+    this->x = _x;
+}
+
+void Object::setY(double _y){
+    this->y = _y;
+}
+
+void Object::setSize(double s){
+    this->size = s;
+}
+
+void Object::setType(object_type t){
+    this->type = t;
+}
+
+void Object::setVelocity(double vel){
+    this->velocity = vel;
+}
+
+void Object::setHeading(double hdg){
+    this->heading = hdg;
+}
+
+void Object::setCollisionDistance(double collisionDist){
+    this->collisionDistance = collisionDist;
+}
+
+void Object::setSafeDistance(double safeDist){
+    this->safeDistance = safeDist;
 }
