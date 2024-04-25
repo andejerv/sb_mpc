@@ -1,5 +1,7 @@
 #include "bb_model.h"
 
+namespace sbmpc{
+
 Agent::Agent(){
     // Constructor
 }
@@ -64,3 +66,5 @@ Eigen::VectorXd BB_MODEL::dxdt(const Eigen::VectorXd& state, const Eigen::Vector
 
     return dxdt;
 }
+
+} // namespace sbmpc

@@ -5,6 +5,8 @@
 
 #include "utilities.h"
 
+namespace sbmpc{
+
 enum object_type
 {
     STATIC,
@@ -51,3 +53,5 @@ class Object
         void setSafeDistance(double safeDist);
         
 };
+
+} // namespace sbmpc

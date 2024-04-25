@@ -7,6 +7,7 @@
 #define RungeKutta4
 //#define EulerForward
 
+namespace sbmpc{
 
 class Agent
 {
@@ -37,3 +38,5 @@ class BB_MODEL: public Agent
         ~BB_MODEL();
 
 };
+
+} // namespace sbmpc

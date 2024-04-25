@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cmath>
 
+namespace sbmpc{
+
 Object::Object(double _x, double _y, double s, double collisionDist, double safeDist): type(object_type::STATIC), x(_x), y(_y), size(s), collisionDistance(collisionDist), safeDistance(safeDist), velocity(0), heading(0){
     // Constructor
 }
@@ -107,3 +109,5 @@ void Object::setCollisionDistance(double collisionDist){
 void Object::setSafeDistance(double safeDist){
     this->safeDistance = safeDist;
 }
+
+} // namespace sbmpc

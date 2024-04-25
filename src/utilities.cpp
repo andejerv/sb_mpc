@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+namespace sbmpc{
+
 std::ostream& operator<<(std::ostream& os, const coordinates& coord) {
     os << "N: " << coord.N << ", E: " << coord.E;
     return os;
@@ -41,3 +43,5 @@ Eigen::Matrix3d ned2cartesian(const Eigen::Matrix3d & ned){
 
     return cartesian;
 }
+
+} // namespace sbmpc

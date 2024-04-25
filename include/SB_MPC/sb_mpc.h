@@ -6,6 +6,8 @@
 #include "bb_model.h"
 #include "object.h"
 
+namespace sbmpc{
+
 class SB_MPC
 {
 
@@ -34,3 +36,5 @@ class SB_MPC
         double costFunction(const Eigen::MatrixXd & sim_states, const std::vector<Eigen::MatrixXd> & obst_positions, std::vector<Object*>& obstacles);
         double collisionRisk(int k, double dist, Object * obj);
 };
+
+} // namespace sbmpc

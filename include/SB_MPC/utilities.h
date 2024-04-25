@@ -4,6 +4,8 @@
 #include <eigen3/Eigen/Dense>
 #include <chrono>
 
+namespace sbmpc{
+
 struct coordinates
 {
     double N;
@@ -23,3 +25,5 @@ class Stopwatch
 
 double deg2rad(double deg);
 Eigen::Matrix3d ned2cartesian(const Eigen::Matrix3d & ned);
+
+} // namespace sbmpc

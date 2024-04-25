@@ -1,5 +1,7 @@
 #include "sb_mpc.h"
 
+namespace sbmpc{
+
 SB_MPC::SB_MPC(int n_steps, double step_sz): num_steps(n_steps), step_size(step_sz){
     // Constructor
 }
@@ -101,3 +103,5 @@ double SB_MPC::collisionRisk(int k, double dist, Object * obj){
 
     return time_risk * distance_risk;
 }
+
+} // namespace sbmpc
