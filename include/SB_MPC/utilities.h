@@ -25,5 +25,6 @@ class Stopwatch
 
 double deg2rad(double deg);
 Eigen::Matrix3d ned2cartesian(const Eigen::Matrix3d & ned);
+double waypointToHeading(Eigen::Vector2d pos, Eigen::Vector2d wp);
 
 } // namespace sbmpc

@@ -44,4 +44,9 @@ Eigen::Matrix3d ned2cartesian(const Eigen::Matrix3d & ned){
     return cartesian;
 }
 
+double waypointToHeading(Eigen::Vector2d pos, Eigen::Vector2d wp){
+    Eigen::Vector2d diff = wp - pos;
+    return atan2(diff(0), diff(1));
+}
+
 } // namespace sbmpc
