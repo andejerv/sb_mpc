@@ -1,4 +1,4 @@
-#include "bb_model.h"
+#include "agent.h"
 
 namespace sbmpc{
 

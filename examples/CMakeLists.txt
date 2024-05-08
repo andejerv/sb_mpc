@@ -17,3 +17,6 @@ add_executable(mpc_test mpc_test.cpp ${SOURCES})
 
 add_executable(sfml_sim sfml_sim.cpp ${SOURCES})
 target_link_libraries(sfml_sim sfml-graphics sfml-window sfml-system)
+
+add_executable(head_on_test head_on_test.cpp ${SOURCES})
+target_link_libraries(head_on_test sfml-graphics sfml-window sfml-system)

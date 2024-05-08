@@ -8,7 +8,7 @@ using namespace sbmpc;
 constexpr int WINDOW_SIZE = 600;
 constexpr int SCALE = 1;
 constexpr int FRAMERATE = 60;
-constexpr double speedUp = 15.0;
+constexpr double speedUp = 2.0;
 
 double find_angle(double x1, double y1, double x2, double y2){
     double angle = atan2(y2-y1, x2-x1);
@@ -61,7 +61,7 @@ int main(){
     Stopwatch sw;
 
     SB_MPC mpc(20*30, 0.05);
-    BB_MODEL agent(0, -150);
+    BB_MODEL agent(0, -10);
 
     std::vector<Object*> obstacles;
 
@@ -69,22 +69,18 @@ int main(){
     /*obstacles.push_back(new Object(0, 0, 2, 2, 10));
     obstacles.push_back(new Object(20, 20, 3, 3, 10));
     obstacles.push_back(new Object(-20, 20, 3, 3, 10));*/
-    obstacles.push_back(new Object(0, 150, 3, 3, 10));
-    obstacles.push_back(new Object(30, 90, 3, 3, 10));
-    obstacles.push_back(new Object(100, 140, 4, 4, 20));
-    obstacles.push_back(new Object(120, 140, 7, 7, 25, 3, (11.0/8)*M_PI));
-    obstacles.push_back(new Object(-50, -40, 20, 20, 80, 3, 0*M_PI));
+    obstacles.push_back(new Object(0, 50, 7, 7, 20, 3, (6.0/4)*M_PI));
 
     // Make agent
-    sf::CircleShape agentShape(10);
-    agentShape.setOrigin(20, 20);
+    sf::CircleShape agentShape(2);
+    agentShape.setOrigin(2, 2);
     agentShape.setPosition(WINDOW_SIZE/2, WINDOW_SIZE/2);
     agentShape.setFillColor(sf::Color::Black);
 
     // Make goal position
     sf::CircleShape goalPosition(10);
     goalPosition.setOrigin(10, 10);
-    goalPosition.setPosition(400, 100);
+    goalPosition.setPosition(300, 20);
     goalPosition.setFillColor(sf::Color(0, 255, 0));
 
     // Control variables

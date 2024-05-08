@@ -6,6 +6,12 @@
 
 namespace sbmpc{
 
+enum IntegrationMethod
+{
+    RK4,
+    EULER
+};
+
 struct coordinates
 {
     double N;

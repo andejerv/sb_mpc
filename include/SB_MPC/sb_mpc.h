@@ -3,7 +3,7 @@
 #include <vector>
 #include <eigen3/Eigen/Dense>
 
-#include "bb_model.h"
+#include "agent.h"
 #include "object.h"
 
 namespace sbmpc{
@@ -19,13 +19,12 @@ class SB_MPC
         double vel_offsets[3] = {0, 0.5, 1};
 
         // Saftey parameters
-        double d_safe = 1.0; // distance below is considerd a collision
-        double d_close = 0.5; // distance for which an object are considered in the algorithm
-        double time_to_collision_weigth = 1.0;
-        double distance_within_dsafe_weigth = 4.0;
+        double time_to_collision_weigth = 2.0;
+        double distance_within_dsafe_weigth = 3;
+        double turning_penalty_constant = 1.5;
         double port_penalty_constant = 1.5;
-        double starboard_penalty_constant = 1.10;
-        double slow_speed_penalty_constant = 2.0;
+        double starboard_penalty_constant = 1.0;
+        double slow_speed_penalty_constant = 3.0;
 
 
     public:

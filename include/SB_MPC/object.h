@@ -17,6 +17,7 @@ class Object
 {
     private:
     object_type type;
+    IntegrationMethod method;
     double x;
     double y;
     double size;
@@ -30,6 +31,7 @@ class Object
     // FIXME - Add a constructor that takes collision and safe distance into account
         Object(double _x, double _y, double s, double collisionDist, double safeDist);
         Object(double _x, double _y, double s, double collisionDist, double safeDist, double vel, double hdg);
+        Object(double _x, double _y, double s, double collisionDist, double safeDist, double vel, double hdg, IntegrationMethod m);
         ~Object();
 
         Eigen::MatrixXd simulate_positions(int num_steps, double step_size);

@@ -43,10 +43,11 @@ void SB_MPC::getBestControlOffset(double & hdg_os_best, double & vel_os_best, do
             cost_i = costFunction(sim_states, obst_positions, obstacles);
 
             // Add penalty for heading offset
+            cost_i += this->turning_penalty_constant*std::pow(hdg_os, 2);
             if(hdg_os < 0){
-                cost_i += this->port_penalty_constant*std::pow(hdg_os, 2);
-            } else {
                 cost_i += this->starboard_penalty_constant*std::pow(hdg_os, 2);
+            } else {
+                cost_i += this->port_penalty_constant*std::pow(hdg_os, 2);
             }
 
             cost_i += this->slow_speed_penalty_constant*std::pow(1-vel_os, 2);
@@ -57,7 +58,7 @@ void SB_MPC::getBestControlOffset(double & hdg_os_best, double & vel_os_best, do
 
     // Find lowest cost in cost vector
     for(int i = 0; i < costs.size(); i++){
-        std::cout << "Cost: " << costs.at(i) << std::endl;
+        //std::cout << "Cost: " << costs.at(i) << std::endl;
         if(costs.at(i) < cost){
             cost = costs.at(i);
             vel_os_best = this->vel_offsets[i%3];

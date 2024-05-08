@@ -4,12 +4,22 @@
 
 namespace sbmpc{
 
-Object::Object(double _x, double _y, double s, double collisionDist, double safeDist): type(object_type::STATIC), x(_x), y(_y), size(s), collisionDistance(collisionDist), safeDistance(safeDist), velocity(0), heading(0){
+Object::Object(double _x, double _y, double s, double collisionDist, double safeDist)
+:type(object_type::STATIC), x(_x), y(_y), size(s), collisionDistance(collisionDist), safeDistance(safeDist), velocity(0), heading(0)
+{
     // Constructor
 }
 
-Object::Object(double _x, double _y, double s , double collisionDist, double safeDist, double vel, double hdg): type(object_type::DYNAMIC), x(_x), y(_y), size(s), collisionDistance(collisionDist), safeDistance(safeDist), velocity(vel), heading(hdg){
+Object::Object(double _x, double _y, double s , double collisionDist, double safeDist, double vel, double hdg) 
+:type(DYNAMIC), method(EULER), x(_x), y(_y), size(s), collisionDistance(collisionDist), safeDistance(safeDist), velocity(vel), heading(hdg)
+{
+    // Contructor
+}
 
+Object::Object(double _x, double _y, double s , double collisionDist, double safeDist, double vel, double hdg, IntegrationMethod m) 
+:type(object_type::DYNAMIC), method(m), x(_x), y(_y), size(s), collisionDistance(collisionDist), safeDistance(safeDist), velocity(vel), heading(hdg)
+{
+    // Contructor
 }
 
 Object::~Object(){
